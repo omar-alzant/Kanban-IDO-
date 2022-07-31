@@ -1,0 +1,30 @@
+.nav{
+    background: transparent linear-gradient(180deg, #6E4C85 0%, #2D2B52 100%) 0% 0% no-repeat padding-box;
+    width: 100vw;
+    height: 50px;
+    margin-top: -23px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.part1{
+    text-align: left;
+    font: italic normal normal 18px/21px HelveticaNeue;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+}
+
+
+.part2{
+    margin-right: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.part2 img{
+    cursor: pointer;
+}

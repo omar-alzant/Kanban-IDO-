@@ -1,0 +1,204 @@
+<div class="d-grid">
+<div class="ps-2 pe-3 pb-2 title">
+    <div *ngIf="!titleB" class="d-inline">
+      <div class="mt-1 cursore w-350 fontTitle" (dblclick)="onOpenTitle()">
+        {{ item.text }}
+      </div>
+    </div>
+
+    <div *ngIf="titleB">
+      <div class="mt-1 ">
+        <mat-form-field class="w-350 border-0">
+          <mat-label  class="fontTitle mb-2">{{ item.text }}</mat-label>
+          <input
+            matInput
+            (keyup.enter)="onCardTitleEmit(item)"
+            [(ngModel)]="titleInput"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+<div class="d-flex ps-2 pe-2">
+    
+  <div class="d-grid justify-content-between align-items-start ">
+        <strong class="d-inline  fontSub">Company:</strong>
+        <strong class="d-inline mt-1 fontSub">Due Date:</strong>
+        <strong class="d-inline mt-2 fontSub">Estimate: </strong>
+        <strong class="d-inline mt-2 fontSub">Importance: </strong>
+    </div>
+  
+  <div class="d-grid ms-4 margin justify-content-between align-items-start gap-2">
+      <div *ngIf="!compB" class="d-inline">
+      <div
+        class=" d-inline cursore justify-content-between fontRes"
+        (dblclick)="onOpenComp()"
+      >
+        {{ item.company }}
+      </div>
+
+    </div>
+
+    <div *ngIf="compB" class="d-inline">
+      <div class="d-inline">
+        <mat-form-field class="w-100 border-0 d-inline">
+          <mat-label cursore class="fontRes">{{ item.company }}</mat-label>
+          <input
+            matInput
+            (keyup.enter)="onCardCompEmit(item)"
+            [(ngModel)]="compInput"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div *ngIf="!dateB" class="d-inline">
+        <div *ngIf="item.date != 'none'" (dblclick)="onOpenDate()" class="d-inline mt-1 cursore fontRes">
+          {{ item.date | date: "dd/MM/yyyy" }}
+        </div>
+        <div *ngIf="item.date == 'none'" (dblclick)="onOpenDate()" class="d-inline mt-1 cursore fontRes">
+          None
+        </div>
+    </div>
+
+    <div *ngIf="dateB">
+      <mat-form-field  class="w-40 border-0 d-inline cursore">
+        <mat-label *ngIf="item.date != 'none'" class="fontRes">{{item.date | date: "dd/MM/yyyy"}}</mat-label>
+        <mat-label *ngIf="item.date == 'none'" class="fontRes"> None </mat-label> 
+              <input matInput [matDatepicker]="picker" [(ngModel)]="DateInput" (keyup.enter)="onCardDateEmit(item)">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>   
+    </div>
+
+    <div *ngIf="!estB" class="d-inline">
+      <div class=" d-inline cursore fontRes" (dblclick)="onOpenEst()">
+        {{ item.estimate }}
+      </div>
+
+    </div>
+
+    <div *ngIf="estB">
+      <div class="d-inline">
+        <mat-form-field class="w-100 border-0 cursore">
+          <mat-label class="fontRes">{{ item.estimate }}</mat-label>
+          <input
+            matInput
+            (keyup.enter)="onCardEstEmit(item)"
+            [(ngModel)]="EstInput"
+            class="inputChange"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div *ngIf="!impB" class="d-inline">
+
+      <div class="d-inline cursore border-1 p-2 rounded fontRes" (dblclick)="onOpenImp()" 
+      [ngStyle]="{background: item.colorImp}" >
+        {{item.importance}} 
+      </div>
+
+    </div>
+
+    <div *ngIf="impB" class="w-100 d-flex  ">
+      <div class="d-inline ">
+        <div class="d-inline me-2">
+          <input
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="LOW"
+            [(ngModel)]="impInput"
+            (keyup.enter)="onCardImpEmit(item)"
+          />
+          <label class="d-inline fontInp" for="inlineRadio1">LOW</label>
+        </div>
+        <div class=" d-inline me-2">
+          <input
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio2"
+            value="MEDUIM"
+            
+            [(ngModel)]="impInput"
+            (keyup.enter)="onCardImpEmit(item)"
+          />
+          <label class="d-inline fontInp" for="inlineRadio2">MEDUIM</label>
+        </div>
+        <div class=" d-inline me-2">
+          <input
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio3"
+            value="HIGH"
+            
+            [(ngModel)]="impInput"
+            (keyup.enter)="onCardImpEmit(item)"
+
+          />
+          <label class="d-inline fontInp" for="inlineRadio3">HIGH</label>
+        </div>
+        <div class=" d-inline me-2">
+          <input
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio4"
+            value="none"
+            [(ngModel)]="impInput"
+            (keyup.enter)="onCardImpEmit(item)"
+            
+          />
+          <label class="d-inline fontInp" for="inlineRadio4">none</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="ms-3">
+    <button mat-icon-button class="icon-delete" (click)="onCardDelete(item.id)">
+      <mat-icon style="font-size: 18px">
+        <svg
+          stroke="currentColor"
+          fill="currentColor"
+          stroke-width="0"
+          viewBox="0 0 1024 1024"
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M292.7 840h438.6l24.2-512h-487z"></path>
+          <path
+            d="M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-504-72h304v72H360v-72zm371.3 656H292.7l-24.2-512h487l-24.2 512z"
+          ></path>
+        </svg>
+      </mat-icon>
+    </button>
+  </div> -->
+  </div>
+
+
+  <!-- <div *ngIf="open">
+    <mat-form-field class="w-100 mb-2">
+      <mat-label>Leave a comment</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="commentInput"
+        (mousedown)="$event.stopPropagation()"
+      ></textarea>
+      <button
+        mat-button
+        *ngIf="commentInput"
+        matSuffix
+        mat-icon-button
+        color="primary"
+        class="icon-confirm"
+        (click)="onCommentTextEmit(item.id)"
+      >
+        <mat-icon>done</mat-icon>
+      </button>
+    </mat-form-field> -->
+
+  <ng-content></ng-content>
+</div>

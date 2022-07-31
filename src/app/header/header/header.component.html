@@ -1,0 +1,61 @@
+<mat-toolbar class=" d-flex  justify-content-between px-5 mb-4 header">
+  <div> 
+    <span class="mat-h2 w-20 ">
+      <img src="/assets/Logo.png" alt="" class="logo">
+    </span>
+  </div>
+
+  <div class="avatarBar gap-4">
+    <div class="box">
+      <input 
+        [(ngModel)]="enteredSearchVal"  
+        (input)="onSearchTextChanged()"
+        type="text"
+        placeholder="What are you looking for?">
+      
+
+        <svg s="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewBox="0 0 24.324 24.328">
+          <defs>
+          <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#d1a8ec"/>
+            <stop offset="1" stop-color="#2d2b52"/>
+          </linearGradient>
+        </defs>
+        <path id="Search" d="M23.993,21.033,19.256,16.3a1.139,1.139,0,0,0-.808-.333h-.774a9.878,9.878,0,1,0-1.71,1.71v.774a1.139,1.139,0,0,0,.333.808l4.737,4.737a1.136,1.136,0,0,0,1.611,0l1.345-1.345A1.146,1.146,0,0,0,23.993,21.033ZM9.882,15.964a6.081,6.081,0,1,1,6.081-6.081A6.078,6.078,0,0,1,9.882,15.964Z" fill="url(#linear-gradient)"/>
+      </svg>
+    </div>
+
+  <div class="part2" >
+    <app-dialog (emitList)="onAddCard($event)" question="Add new column">
+        <div class="w-20" [ngStyle]="{cursor: 'pointer'}">
+          <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <title>Circle-svg</title>
+            <defs>
+              <linearGradient id="g1" x1="12" y1="0" x2="12" y2="24" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#d1a8ec"/>
+                <stop offset="1" stop-color="#2d2b52"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="12" y1="5" x2="12" y2="19" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#d1a8ec"/>
+                <stop offset="1" stop-color="#2d2b52"/>
+              </linearGradient>
+            </defs>
+            <style>
+              .s0 { fill: url(#g1) } 
+              .s1 { fill: url(#g2) } 
+            </style>
+            <path id="Circle" fill-rule="evenodd" class="s0" d="m16.6 0.9c1.4 0.6 2.8 1.5 3.9 2.6 1.1 1.1 2 2.5 2.6 3.9 0.6 1.5 0.9 3 0.9 4.6 0 4.9-2.9 9.2-7.4 11.1-4.5 1.8-9.7 0.8-13.1-2.6-3.4-3.4-4.4-8.6-2.6-13.1 1.9-4.5 6.2-7.4 11.1-7.4 1.6 0 3.1 0.3 4.6 0.9zm-6.5 1.7q-0.9 0.2-1.8 0.5-0.8 0.4-1.6 0.9-0.8 0.6-1.5 1.2c-3.2 3.3-3.7 8.3-1.2 12.1 2.6 3.8 7.4 5.3 11.6 3.5 4.3-1.7 6.7-6.2 5.8-10.7-0.9-4.4-4.8-7.7-9.4-7.7q-0.9 0-1.9 0.2z"/>
+            <path id="Add" class="s1" d="m19 13.4h-5.6v5.6h-2.8v-5.6h-5.6v-2.8h5.6v-5.6h2.8v5.6h5.6z"/>
+          </svg>
+        </div>
+    </app-dialog>
+  </div>
+
+  <div class="part3">
+    <img src="/assets/Bitmap.png" alt="avatar" [ngStyle]="{cursor: 'pointer'}" (click)="showAvatar()" class="bitmap rounded-circle ">
+  </div>
+ 
+  </div>
+  
+</mat-toolbar>
+<app-avatar *ngIf="avatar" [userName]="onGet()"></app-avatar>

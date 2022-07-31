@@ -1,0 +1,108 @@
+
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url(/assets/HelveticaNeue.ttf);
+}
+
+.login{
+    display: flex;
+
+}
+
+.part1{
+    background: #212121 0% 0% no-repeat padding-box;
+    // border: 1px solid yellow;
+    height: 100vh;
+    width: 50vw;
+    display: grid;
+}
+
+.part1-1{
+    // border: 1px solid yellow;
+    height: 55vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 2vw;
+}
+
+.part1-1 img{
+    width: 30vw;
+    height: 30vh;
+}
+
+.part1-2{
+    // border: 1px solid yellow;
+    display: flex;
+    height: 45vh;
+}
+
+.part1-2-1{
+    flex: 1;
+    // border: 1px solid green;
+    display: flex;
+    align-items: flex-end;
+}
+.part1-2-1 img{
+    width: 10vw;
+    height: 80%;
+}
+.part1-2-2{
+    flex: 2;
+    // border: 1px solid green;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+.part1-2-2 img{
+    width: 30vw;
+    height: 95%;
+
+}
+
+
+.part2{
+    background: transparent linear-gradient(180deg, #8556A4 0%, #2D2B52 100%) 0% 0% no-repeat padding-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 50vw;
+}
+
+.disp{
+    width: 30vw;
+    height: 45vh;
+    margin-top: -10vw;
+}
+
+.form-text
+{
+    text-align: left;
+    font: normal normal 100 72px/81px HelveticaNeue;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+.form-label{
+    text-align: left;
+    font: normal normal 300 16px/24px HelveticaNeue;
+    letter-spacing: 0px;
+    color: #FFFFFF;    
+    padding: 0;
+    margin: 0;
+}
+
+.form-control{
+    background: #222222 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    color: white;
+}
+
+.btn{
+    background: #B6A3C2 0% 0% no-repeat padding-box;
+    width: 100%;
+    margin-top: 1vw ;
+}

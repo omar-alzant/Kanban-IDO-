@@ -1,0 +1,8 @@
+<div class="nav" (mouseenter)="onHover()" (mouseleave)="onHover()" *ngIf="RNav">
+    <div class="part1" >
+        "Anything that can go wrong, will go wrong!"
+    </div>
+    <div class="part2"  *ngIf="remove" >
+        <img (click)="removNav()" src="assets/RemoveQuote.png"  alt="remove">
+    </div>
+</div>

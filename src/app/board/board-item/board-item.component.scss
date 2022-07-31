@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'HelveticaNeueBd';
+  src: url(/assets/HelveticaNeueBd.ttf);
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url(/assets/HelveticaNeue.ttf);
+}
+
+strong {
+  font-family: 'HelveticaNeue';
+  font-size: 1vw !important;
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.icon {
+  font-size: 18px;
+}
+
+.margin{
+  margin-top: -0.55vw;
+  
+}
+.title {
+  font-family: 'HelveticaNeueBd';
+  letter-spacing: 0px !important;
+  color: #FFFF !important;
+  opacity: 1 !important;
+  position: sticky;
+}
+
+.fontTitle{
+  font-size: 0.9vw;
+  
+}
+
+.fontSub{
+  font-size: 0.7vw !important;
+}
+
+.fontRes{
+  font-size: 0.9vw !important;
+  height: 0.3vw !important;
+}
+
+.mat-icon-button {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color ease .2s;
+}
+
+.mat-icon-button:hover {
+  color: rgb(255, 255, 255);
+}
+
+.mat-icon-button .mat-button-wrapper>* {
+  vertical-align: none !important;
+}
+
+.cursore {
+  cursor: pointer;
+}
+
+// .mat-form-field {
+//   background-color: rgb(212, 212, 212);
+//   padding: 10px 10px 0 10px;
+// }
+
+.mat-form-field{
+  width: 1vw !important;
+}
+
+::ng-deep .mat-form-field.mat-focused {
+  .mat-form-field-required-marker {
+    color: #000000;
+  }
+
+  .mat-input-element {
+    color: #fffbfb;
+  }
+}
+
+.icon-confirm {
+  font-size: 20px !important;
+}
+
+.inputChange {
+  background-color: transparent;
+  border: none;
+  width: 100px;
+}
+
+.mat-input-element {
+  color: #fff !important;
+}

@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'HelveticaNeueBd';
+    src: url(/assets/HelveticaNeueBd.ttf);
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url(/assets/HelveticaNeue.ttf);
+}
+
+a{
+    text-decoration: none;
+    color:#FFFFFF !important; 
+}
+
+a:visited{
+    text-decoration: none;
+    color:#FFFFFF !important;
+}
+
+
+.box{
+    background-color: #232323;
+    width: 20vw;
+    height: 7vw;
+    display: grid;
+    position: absolute;
+    margin-top: -2.9vw;
+    box-shadow: 0px 3px 6px #FFFFFF29;
+    right: 40px;
+    padding: 1vw;
+}
+
+.part1{
+    // border: 1px solid yellow;
+    width: 70px;
+    display: flex;
+    grid-row: 1/3;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.part1 img{
+    border-radius: 50%;
+} 
+
+.part2{
+    // border: 1px solid pink;
+    color: #B6A3C2;
+    font-family: 'HelveticaNeueBd';
+    display: flex;
+    font-size: 1vw;
+    grid-row: 1/2;
+}
+.part3{
+    // border: 1px solid blue;
+    font-family: 'HelveticaNeue';
+    display: flex;
+    color: white;
+
+}

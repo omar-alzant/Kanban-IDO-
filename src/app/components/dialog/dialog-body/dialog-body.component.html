@@ -1,0 +1,50 @@
+<div mat-dialog-content>
+  <h3>{{data.question}}</h3>
+  <mat-form-field class="w-100" >
+    <mat-label>Name of Column</mat-label>
+    <input matInput [(ngModel)]="data.title" required>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" >
+    <mat-label>Add Title</mat-label>
+    <input matInput [(ngModel)]="data.text" >
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <mat-label> Company</mat-label>
+    <input matInput [(ngModel)]="data.company" >
+  </mat-form-field>
+
+  <div *ngIf="!dateB">
+        <mat-form-field class="w-60">
+          <mat-label> Due Date </mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="data.date">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>   
+      </div>    
+          <mat-checkbox value="none" (change)="onRadioClick()">
+          None
+          </mat-checkbox>
+        
+    <mat-form-field class="w-100" >
+      <mat-label>Add Estimate</mat-label>
+      <input matInput [(ngModel)]="data.estimate">
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Importance </mat-label>
+      <mat-select [(ngModel)]="data.imp">
+        <mat-option *ngFor="let i of importance" [value]="i.type" >
+          {{i.type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button [mat-dialog-close]="[data.text,data.company,dateB? 'none' : data.date, data.estimate,data.imp,data.title]" cdkFocusInitial color="primary">Confirm</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</div>
+
