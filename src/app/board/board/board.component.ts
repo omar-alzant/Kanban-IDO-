@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { BoardService } from 'src/app/services/board.service';
+import { Observable } from 'rxjs';
+import { BoardItemComponent } from '../board-item/board-item.component';
 
 @Component({
   selector: 'app-board',
@@ -8,23 +10,69 @@ import { BoardService } from 'src/app/services/board.service';
   styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent implements OnInit {
-@Input() viewQ: boolean = true;
+
+  todoList$!: Observable<any[]>;
+  doingList$!: Observable<any[]>;
+  doneList$!: Observable<any[]>;
+  
+
+  @Input() todoId:any;
+  @Input() doingId:any;
+  @Input() doneId:any;
+
+
+  
+  @Input() viewQ: boolean = true;
 
 user = '';
 searchText = '';
 nav = false ;
-  
+titleB = false;
+dateB = false;
+noneB = false;
+estB = false;
+compB = false;
+impB = false;
+
+commentInput = ''
+titleInput = ''
+DateInput = ''
+EstInput = ''
+compInput = ''
+impInput = ''
+
+
   constructor(
-    public boardService: BoardService
-  ) { }
+    public boardService: BoardService  ) { }
 
   ngOnInit(): void {
     console.log('BOARD - INIT')
+    this.todoList$ = this.boardService.getTodoList();
+    this.doingList$ = this.boardService.getDoingList();
+    this.doneList$ = this.boardService.getDoneList();
+    
+
   }
 
-  onGetUser(user:string){
-    
-  }
+ titleColumn(){
+  return ["todo","doing","done"];
+ }
+
+
+
+onOpenTitle(){
+  this.titleB = !this.titleB;
+}
+onOpenEst(){
+  this.estB = !this.estB;
+}
+onOpenComp(){
+  this.compB = !this.compB;
+}
+onOpenImp(){
+  this.impB = !this.impB;
+}
+
 
   onColorChange(color: string, columnId: number) {
     this.boardService.changeColumnColor(color, columnId)
@@ -49,6 +97,20 @@ nav = false ;
     this.boardService.changeTitle(id, columnId, text)
   }
 
+  changeTitleApi(item:any){
+    let todoItem = {
+      id: item.id,
+      text: item.text,
+      company: item.company,
+      date: item.date,
+      estimate: item.estimate,
+      importance: item.importance
+    }
+
+    let id: number = item.id;
+    this.boardService.updateTitleTodo(id,item);
+  }
+
   onChangeImp(event: {card:any, imp: string}, columnId:number){
     const { card: {id}, imp } = event;
     this.boardService.changeImp(id, columnId, imp)
@@ -71,19 +133,6 @@ nav = false ;
     this.boardService.changeEst(id, columnId, est)
   }
 
-
-  // onChangeLike(event: {card: any, increase: boolean}, columnId: number ) {
-  //   const { card: { id }, increase } = event
-  //   this.boardService.changeLike(id, columnId, increase)
-  // }
-
-  // onAddComment(event: {id: number, text: string}, columnId: number) {
-  //   this.boardService.addComment(columnId, event.id, event.text)
-  // }
-  
-  // onDeleteComment(comment:any, columnId:any, item:any) {
-  //   this.boardService.deleteComment(columnId, item.id, comment.id)
-  // }
 
   onSearchTextEntered(searchValue:string){
      this.searchText = searchValue;

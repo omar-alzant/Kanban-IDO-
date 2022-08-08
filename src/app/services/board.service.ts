@@ -1,14 +1,18 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Card, Column, Comment } from '../models/column.model';
 import {AngularFireAuth} from '@angular/fire/compat/auth'
 import { Router } from '@angular/router';
-
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BoardService {
+
+  readonly kanbanAPIUrl = "https://localhost:7121/api";
+
+
   color: any;
   user : string = '';
 
@@ -88,16 +92,16 @@ export class BoardService {
   ];
 
 
-  constructor(private fireauth: AngularFireAuth, private router: Router){}
+  constructor(private fireauth: AngularFireAuth, private router: Router, private http:HttpClient){}
 
   private board: Column[] = this.initBoard;
   private board$ = new BehaviorSubject<Column[]>(this.initBoard);
   
  
   getUser(){
-
     return this.user;
   }
+
 
 
   login(email: string, password: string){
@@ -133,9 +137,32 @@ export class BoardService {
   sendEmailForVarification(user: import("firebase/compat").default.User | null) {
     throw new Error('Method not implemented.');
   }
+
+
+
+
   getBoard$() {
     return this.board$.asObservable();
   }
+
+
+getTodoList():Observable<any[]>{
+  return this.http.get<any>(this.kanbanAPIUrl + '/Todoes');
+}
+
+getDoingList():Observable<any[]>{
+  return this.http.get<any>(this.kanbanAPIUrl + '/Doings');
+}
+
+getDoneList():Observable<any[]>{
+  return this.http.get<any>(this.kanbanAPIUrl + '/Dones');
+}
+
+updateTitleTodo(id:number|string, data:any){
+  return this.http.put(this.kanbanAPIUrl + `/Todoes/${id}`,data);
+}
+
+
 
   changeColumnColor(color: string, columnId: number) {
     this.board = this.board.map((column: Column) => {
@@ -391,69 +418,8 @@ addCardH(data: any) {
     this.board$.next([...this.board]);
   }
 
-  // changeLike(cardId: number, columnId: number, increase: boolean) {
-  //   this.board = this.board.map((column: Column) => {
-  //     if (column.id === columnId) {
-  //       const list = column.list.map((card: Card) => {
-  //         if (card.id === cardId) {
-  //           if (increase) {
-  //             card.like++;
-  //           } else {
-  //             if (card.like > 0) {
-  //               card.like--;
-  //             }
-  //           }
-  //         }
-  //         return card;
-  //       });
 
-  //       column.list = list;
-  //       return column;
-  //     } else {
-  //       return column;
-  //     }
-  //   });
 
-  //   this.board$.next([...this.board]);
-  // }
 
-  // addComment(columnId: number, cardId: number, text: string) {
-  //   this.board = this.board.map((column: Column) => {
-  //     if (column.id === columnId) {
-  //       const list = column.list.map((card: Card) => {
-  //         if (card.id === cardId) {
-  //           const newComment = {
-  //             id: Date.now(),
-  //             text,
-  //           };
-  //           card.comments = [newComment, ...card.comments];
-  //         }
-  //         return card;
-  //       });
 
-  //       column.list = list;
-  //     }
-  //     return column;
-  //   });
-
-  //   this.board$.next([...this.board]);
-  // }
-
-  // deleteComment(columnId:any, itemId:any, commentId:any) {
-  //   this.board = this.board.map((column: Column) => {
-  //     if(column.id === columnId) {
-  //       const list = column.list.map((item)=> {
-  //         if(item.id === itemId) {
-  //           item.comments = item.comments.filter((comment: Comment) => {
-  //             return comment.id !== commentId
-  //           })
-  //         }
-  //         return item
-  //       })
-  //       column.list = list
-  //     }
-  //     return column
-  //   })
-  //   this.board$.next([...this.board])
-  // }
 }

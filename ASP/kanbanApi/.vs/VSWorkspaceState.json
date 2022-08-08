@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\kanbanApi",
+    "\\kanbanApi\\kanbanApi"
   ],
-  "SelectedNode": "\\kanbanApi.sln",
+  "SelectedNode": "\\kanbanApi\\kanbanApi.sln",
   "PreviewInSolutionExplorer": false
 }

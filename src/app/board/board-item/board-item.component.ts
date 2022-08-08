@@ -83,6 +83,8 @@ export class BoardItemComponent implements OnInit {
     this.titleInput = ''
   }
 
+
+
   onRadioClick(){
     this.noneB = !this.noneB;
     this.DateInput = 'None';
