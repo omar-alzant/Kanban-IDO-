@@ -10,13 +10,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { LoginComponent } from './login/login.component';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
   ],
   imports: [
     BrowserModule,
